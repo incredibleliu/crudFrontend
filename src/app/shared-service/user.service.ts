@@ -22,33 +22,38 @@ export class UserService {
 
   getUsers() {
     console.log('111', this._http.get(this.baseUrl + '/users', this.options).map((response: Response) => response.json()));
-    return this._http.get(this.baseUrl + '/users', this.options).map((response: Response) => response.json())
-      .catch(this.errorHandler);
+    return this._http.get(this.baseUrl + '/users', this.options)
+                      .map((response: Response) => response.json())
+                      .catch(this.errorHandler);
   }
 
 
 
   getUser(id: Number) {
-    return this._http.get(this.baseUrl + '/user' + id, this.options).map((response: Response) => response.json())
-      .catch(this.errorHandler);
+    return this._http.get(this.baseUrl + '/user' + id, this.options)
+                    .map((response: Response) => response.json())
+                    .catch(this.errorHandler);
   }
 
 
   deletUser(id: Number) {
-    return this._http.delete(this.baseUrl + '/user/' + id, this.options).map((response: Response) => response.json())
-      .catch(this.errorHandler);
+    return this._http.delete(this.baseUrl + '/user/' + id, this.options)
+                    .map((response: Response) => response.json())
+                    .catch(this.errorHandler);
   }
 
 
   createUser(user: User) {
-    return this._http.post(this.baseUrl + '/user', JSON.stringify(user), this.options).map((response: Response) => response.json())
-      .catch(this.errorHandler);
+    return this._http.post(this.baseUrl + '/user', JSON.stringify(user), this.options)
+                    .map((response: Response) => response.json())
+                    .catch(this.errorHandler);
   }
 
 
   updateUser(user: User) {
-    return this._http.put(this.baseUrl + '/user', JSON.stringify(user), this.options).map((response: Response) => response.json())
-      .catch(this.errorHandler);
+    return this._http.put(this.baseUrl + '/user', JSON.stringify(user), this.options)
+                    .map((response: Response) => response.json())
+                    .catch(this.errorHandler);
   }
 
 

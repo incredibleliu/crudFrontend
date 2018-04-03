@@ -14,7 +14,7 @@ export class UserService {
 
   private baseUrl = 'http://localhost:8080/api';
   // private baseUrl = 'http://localhost:8080/angularCRUD/api';
-  private headers = new Headers({ 'Content-Type': 'applications/json' });
+  private headers = new Headers({ 'Content-Type': 'application/json' });
   private options = new RequestOptions({ headers: this.headers });
   private user: User;
 

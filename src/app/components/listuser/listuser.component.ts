@@ -12,6 +12,8 @@ export class ListuserComponent implements OnInit {
 
   public users: User[];
 
+  statusMessage: string;
+
   constructor(private _userService: UserService, private _router: Router) { }
 
   ngOnInit() {
@@ -28,6 +30,7 @@ export class ListuserComponent implements OnInit {
       this.users.splice(this.users.indexOf(user), 1);
     }, (error) => {
       console.log(error);
+      this.statusMessage = 'Problem with the service. Please try again later';
     });
   }
 

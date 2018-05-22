@@ -20,46 +20,46 @@ export class UserService {
 
   constructor(private _http: Http) { }
 
-  getUsers() {
-    console.log('111', this._http.get(this.baseUrl + '/users', this.options).map((response: Response) => response.json()));
+  getUsers(): Observable<User[]> {
+    // console.log('111', this._http.get(this.baseUrl + '/users', this.options).map((response: Response) => response.json()));
     return this._http.get(this.baseUrl + '/users', this.options)
-                      .map((response: Response) => response.json())
-                      .catch(this.errorHandler);
+      .map((response: Response) => <User[]>response.json())
+      .catch(this.errorHandler);
   }
 
 
 
-  getUser(id: Number) {
+  getUser(id: Number): Observable<User> {
     return this._http.get(this.baseUrl + '/user' + id, this.options)
-                    .map((response: Response) => response.json())
-                    .catch(this.errorHandler);
+      .map((response: Response) => <User>response.json())
+      .catch(this.errorHandler);
   }
 
 
   deletUser(id: Number) {
     return this._http.delete(this.baseUrl + '/user/' + id, this.options)
-                    .map((response: Response) => response.json())
-                    .catch(this.errorHandler);
+      .map((response: Response) => response.json())
+      .catch(this.errorHandler);
   }
 
 
   createUser(user: User) {
     return this._http.post(this.baseUrl + '/user', JSON.stringify(user), this.options)
-                    .map((response: Response) => response.json())
-                    .catch(this.errorHandler);
+      .map((response: Response) => response.json())
+      .catch(this.errorHandler);
   }
 
 
   updateUser(user: User) {
     return this._http.put(this.baseUrl + '/user', JSON.stringify(user), this.options)
-                    .map((response: Response) => response.json())
-                    .catch(this.errorHandler);
+      .map((response: Response) => response.json())
+      .catch(this.errorHandler);
   }
 
 
 
   errorHandler(error: Response) {
-
+    console.error(error);
     return Observable.throw(error || 'SERVER ERROR');
   }
 
